@@ -1,0 +1,114 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: url(digital-currency.jpg) no-repeat ;
+  background-size: cover;
+  color: white;
+  object-fit: cover;
+}
+
+.currency-container{
+  margin-left: 600px !important;
+  padding: 24px 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgb(240, 243, 37);
+  text-align: center;
+  margin: 15px;
+  /* background-color: rgb(36, 105, 126); */
+  background: transparent;
+  backdrop-filter: blur(5px);
+}
+
+.currency-container h1{
+  font-size: 30px;
+  text-decoration:underline rgb(229, 243, 37);
+  text-underline-offset: 4px;
+  margin-bottom: 40px;
+}
+
+.input-container{
+  /* background-color: white; */
+  border: 2px solid ghostwhite;
+  margin-block: 20px;
+  border-radius: 5px;
+}
+
+.input-container:focus-within{
+  border-color: rgb(231, 244, 88);
+}
+
+/* input[type="number"]{
+  color:rgb(12, 69, 90);
+  font-weight: 600;
+} */
+
+.input-container input, select {
+  outline: none;
+  border: none;
+  width: 180px;
+  padding: 8px;
+  background: none;
+  font-size: 17px;
+  color:rgb(248, 251, 253);
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.input-container option{
+  color: black;
+}
+
+.currency-result{
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.converter-arrow{
+  transform: rotate(90deg);
+  font-size: 44px;
+  color: rgb(229, 243, 37);
+}
+
+@media screen and (max-width: 1200px ){
+  .currency-container{
+    margin-left: 15px !important;
+    backdrop-filter: blur(40px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .currency-container h1{
+    font-size: 24px;
+  }
+
+  .input-container{
+    border:none;
+  }
+
+  .input-container input, select{
+    border: 1px solid ghostwhite;
+    width: 240px;
+    border-radius: 5px;
+  }
+
+  .input-container select{
+    width: 260px;
+    margin-top: 10px;
+  }
+
+  .input-container select:focus-within{
+    border-color: rgb(231, 244, 88);
+  }
+
+  .input-container input:focus-within{
+    border-color: rgb(231, 244, 88);
+  }
+}
