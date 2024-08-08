@@ -7,7 +7,7 @@ body{
   justify-content: center;
   min-height: 100vh;
   box-sizing: border-box;
-  background: url(digital-currency.jpg) no-repeat ;
+  background: url(img/digital-currency.jpg) no-repeat ;
   background-size: cover;
   color: white;
   object-fit: cover;
