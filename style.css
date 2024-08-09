@@ -51,13 +51,12 @@ body{
 .input-container input, select {
   outline: none;
   border: none;
-  width: 180px;
   padding: 8px;
+  width: 180px;
   background: none;
   font-size: 17px;
   color:rgb(248, 251, 253);
   font-weight: 600;
-  overflow: hidden;
 }
 
 .input-container option{

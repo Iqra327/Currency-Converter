@@ -20,3 +20,27 @@ countries.forEach((country) => {
   fromCurrencyElement.value = 'USD';
   toCurrencyElement.value = 'PKR';
 })
+
+//function for fetching data
+
+async function exchangeRates(){
+  const amount = parseFloat(fromAmountElement.value);
+  const fromCurrency = fromCurrencyElement.value;
+  const toCurrency = toCurrencyElement.value;  
+
+  const response = await fetch(
+    `https://v6.exchangerate-api.com/v6/e402f28ace1114ed6d4c923a/latest/${fromCurrency}`
+  );
+  const data = await response.json();
+  const rates = data.conversion_rates[toCurrency];
+  const convertedAmount = (amount * rates).toFixed();
+  toAmountElement.value = convertedAmount;
+  
+  resultElement.textContent = `${amount} ${fromCurrency} = ${toAmountElement.value} ${toCurrency}`;
+}
+
+fromAmountElement.addEventListener('input', exchangeRates);
+
+
+
+
