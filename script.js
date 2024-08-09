@@ -1,5 +1,6 @@
 import { countries } from "./data/countries.js";
 
+const currencyContainer = document.querySelector('.js-currency-container');
 const fromAmountElement = document.querySelector('.js-input-amount');
 const fromCurrencyElement = document.querySelector('.js-from-currency');
 const toAmountElement = document.querySelector('.js-to-amount');
@@ -27,19 +28,36 @@ async function exchangeRates(){
   const amount = parseFloat(fromAmountElement.value);
   const fromCurrency = fromCurrencyElement.value;
   const toCurrency = toCurrencyElement.value;  
+  resultElement.textContent = 'Fetching exchange rate...';
 
-  const response = await fetch(
-    `https://v6.exchangerate-api.com/v6/e402f28ace1114ed6d4c923a/latest/${fromCurrency}`
-  );
-  const data = await response.json();
-  const rates = data.conversion_rates[toCurrency];
-  const convertedAmount = (amount * rates).toFixed();
-  toAmountElement.value = convertedAmount;
-  
-  resultElement.textContent = `${amount} ${fromCurrency} = ${toAmountElement.value} ${toCurrency}`;
+  try {
+      const response = await fetch(
+        `https://v6.exchangerate-api.com/v6/e402f28ace1114ed6d4c923a/latest/${fromCurrency}`
+      );
+      const data = await response.json();
+      const rates = data.conversion_rates[toCurrency];
+      const convertedAmount = (amount * rates).toFixed(2);
+
+      if(rates === undefined)
+        {
+        resultElement.textContent = 'Exchange rate data is not available for selected country!';
+        toAmountElement = '';
+      }
+      else{
+        toAmountElement.value = convertedAmount;
+
+        resultElement.textContent = `${amount} ${fromCurrency} = ${toAmountElement.value} ${toCurrency}`;
+      }
+
+    } catch (error) {
+      currencyContainer.innerHTML = `<h2>Error while fetching exchange rate!!!</h2>`;
+    }
 }
 
 fromAmountElement.addEventListener('input', exchangeRates);
+fromCurrencyElement.addEventListener('change', exchangeRates);
+toCurrencyElement.addEventListener('change', exchangeRates);
+window.addEventListener('load', exchangeRates);
 
 
 
