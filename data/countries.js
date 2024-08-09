@@ -1,4 +1,4 @@
-export const countries =[ 
+export const countries = [ 
   { "code":"AED", "name":"United Arab Emirates dirham"}, { "code":"AFN", "name":"Afghan afghani"}, 
   { "code":"ALL", "name":"Albanian lek"}, 
   { "code":"AMD", "name":"Armenian dram"},
